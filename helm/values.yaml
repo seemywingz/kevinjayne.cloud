@@ -45,12 +45,13 @@ service:
 ingress:
   enabled: true
   className: "nginx"
-  annotations: { cert-manager.io/cluster-issuer: "letsencrypt-prod" }
+  annotations:
+    { cert-manager.io/cluster-issuer: "cloudlfare-letsencrypt-production" }
   hosts:
     - host: kevinjayne.cloud
       paths:
         - path: /
-          pathType: ImplementationSpecific
+          pathType: Prefix
   tls:
     - secretName: kevinjayne.cloud-tls
       hosts:
